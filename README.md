@@ -52,6 +52,7 @@ Controls seller approval, product approval, AI review decisions, disputes, categ
 ## Docs
 
 - Full spec: [`Puremart.md`](./Puremart.md) — PRD v1.3
+- Build plan: [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md) — phased plan with concrete outputs
 
 ## Status
 
