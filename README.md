@@ -59,4 +59,4 @@ PRD phase. No implementation yet.
 
 ## Repository
 
-https://github.com/linxx5/puremart.git
+https://github.com/linxx5/puremart

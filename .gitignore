@@ -1,0 +1,20 @@
+# Word / Office temp files
+~$*.docx
+~$*.doc
+~WRL*.tmp
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
