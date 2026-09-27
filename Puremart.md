@@ -4,7 +4,7 @@
 
 ### **A Trusted Wholesale & Retail Marketplace with Escrow, Delivery Tracking and AI Product Safety**
 
-**Version:** 1.0  
+**Version:** 1.1  
  **Product Name:** Puremart Marketplace  
  **Tagline:** *Buy with Confidence. Sell with Trust.*
 
@@ -26,7 +26,48 @@ The goal is to create a marketplace where people feel safe buying products onlin
 
 ---
 
-# **2\. Core Objectives**
+# **2\. Problem Statement**
+
+## **The Problem**
+
+Buying and selling online today runs on blind trust. Buyers pay first and hope for the best. Sellers send goods to strangers and hope to get paid. When something goes wrong, there is often no fair way to resolve it.
+
+Buyers face:
+
+* Fake and counterfeit products  
+* Expired, unsafe, or harmful products (food, health, and beauty products)  
+* Damaged products, wrong items, or missing items  
+* Products that are paid for but never delivered  
+* No protection once payment has been made  
+* No visibility into where their delivery is
+
+Sellers face:
+
+* Fraudulent buyers and false claims  
+* Lost goods and lost payments with no recourse  
+* No system to prove they delivered as promised
+
+Wholesale and business buyers face:
+
+* Large sums of money at risk on bulk orders they cannot inspect first  
+* No structured inspection period before money changes hands  
+* Informal negotiation and quotation with no payment protection
+
+Existing marketplaces do not solve this. Products are listed without safety screening, payment goes straight to the seller, deliveries cannot be tracked transparently, and disputes leave one side cheated.
+
+## **Who Is Affected**
+
+* Everyday buyers purchasing for personal and family use  
+* Businesses and bulk buyers placing high-value and wholesale orders  
+* Honest sellers whose reputation suffers because buyers cannot tell them apart from bad sellers
+
+## **What Puremart Will Do**
+
+Puremart removes the need for blind trust by combining AI product safety, escrow-protected payments, transparent delivery tracking, seller verification, and human-led dispute resolution — so buyers can buy with confidence and sellers can sell with trust.
+
+---
+
+# **3\. Core Objectives**
 
 Puremart aims to:
 
@@ -40,7 +81,7 @@ Puremart aims to:
 
 ---
 
-# **3\. User Types**
+# **4\. User Types**
 
 Puremart has just 3 user types: Buyer, Seller, and Admin.
 
@@ -82,7 +123,7 @@ Sells in bulk quantities with minimum order quantities, bulk discounts, and cust
 
 A seller can operate as Retail only, Wholesale only, or both.
 
-Any seller can apply to become a 🟢 Verified Seller (see Section 4).
+Any seller can apply to become a 🟢 Verified Seller (see Section 5).
 
 ---
 
@@ -100,7 +141,7 @@ Admin controls:
 
 ---
 
-# **4\. Seller Verification**
+# **5\. Seller Verification**
 
 Sellers can become:
 
@@ -118,7 +159,7 @@ Admin has final approval.
 
 ---
 
-# **5\. Product Categories**
+# **6\. Product Categories**
 
 Puremart supports:
 
@@ -141,7 +182,7 @@ Admin can:
 
 ---
 
-# **6\. Product Safety System**
+# **7\. Product Safety System**
 
 ## **AI Checks**
 
@@ -183,7 +224,7 @@ Admin can:
 
 ---
 
-# **7\. Product Approval Model**
+# **8\. Product Approval Model**
 
 ### **Low Risk**
 
@@ -199,7 +240,7 @@ Mandatory Admin approval.
 
 ---
 
-# **8\. Buying Process**
+# **9\. Buying Process**
 
 Buyer:
 
@@ -214,7 +255,7 @@ Buyer:
 
 ---
 
-# **9\. Escrow Payment System**
+# **10\. Escrow Payment System**
 
 Buyer pays.
 
@@ -246,7 +287,7 @@ Inspection period before release.
 
 ---
 
-# **10\. Delivery System**
+# **11\. Delivery System**
 
 Puremart uses:
 
@@ -273,7 +314,7 @@ Status:
 
 ---
 
-# **11\. Notifications**
+# **12\. Notifications**
 
 Users receive:
 
@@ -293,7 +334,7 @@ Through:
 
 ---
 
-# **12\. Dispute System**
+# **13\. Dispute System**
 
 Available for:
 
@@ -322,7 +363,7 @@ Admin makes final decision.
 
 ---
 
-# **13\. Dispute Outcomes**
+# **14\. Dispute Outcomes**
 
 * Full refund  
 * Partial refund  
@@ -333,7 +374,7 @@ Admin makes final decision.
 
 ---
 
-# **14\. Reviews and Ratings**
+# **15\. Reviews and Ratings**
 
 Buyers can rate:
 
@@ -347,7 +388,7 @@ Reviews influence seller trust scores.
 
 ---
 
-# **15\. Trust Score**
+# **16\. Trust Score**
 
 Each seller gets:
 
@@ -367,7 +408,7 @@ Example:
 
 ---
 
-# **16\. Wholesale Features**
+# **17\. Wholesale Features**
 
 Wholesale sellers can:
 
@@ -379,7 +420,7 @@ Wholesale sellers can:
 
 ---
 
-# **17\. AI Features**
+# **18\. AI Features**
 
 ## **Product Safety AI**
 
@@ -419,7 +460,7 @@ Detects:
 
 ---
 
-# **18\. Admin Dashboard**
+# **19\. Admin Dashboard**
 
 Admin can:
 
@@ -435,7 +476,7 @@ Admin can:
 
 ---
 
-# **19\. Revenue Model**
+# **20\. Revenue Model**
 
 Puremart earns from:
 
@@ -461,7 +502,7 @@ Small fee on protected transactions.
 
 ---
 
-# **20\. Future Features**
+# **21\. Future Features**
 
 ### **Puremart Verified Products**
 
@@ -493,7 +534,7 @@ A chatbot that helps buyers find products.
 
 ---
 
-# **21\. Puremart Brand Promise**
+# **22\. Puremart Brand Promise**
 
 **Puremart is a trusted marketplace where AI, escrow, delivery tracking, and human oversight work together to help people buy and sell safely.**
 
