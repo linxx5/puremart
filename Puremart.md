@@ -4,7 +4,7 @@
 
 ### **A Trusted Wholesale & Retail Marketplace with Escrow, Delivery Tracking and AI Product Safety**
 
-**Version:** 1.1  
+**Version:** 1.2  
  **Product Name:** Puremart Marketplace  
  **Tagline:** *Buy with Confidence. Sell with Trust.*
 
@@ -138,6 +138,81 @@ Admin controls:
 * Product categories  
 * Marketplace rules  
 * User management
+
+---
+
+## **User Personas**
+
+### **Persona 1: Adaeze — Retail Buyer**
+
+* 32, nurse and mother of two in Lagos, shops mostly from her phone  
+* Buys food, baby products, and household items for her family
+
+Goals:
+
+* Buy genuine, safe products every time  
+* Know exactly where her delivery is  
+* Get her money back easily if something goes wrong
+
+Frustrations:
+
+* Once bought expired baby formula from an online seller  
+* Received the wrong item and the seller stopped responding after payment
+
+What she needs from Puremart:
+
+* Verified sellers and clear safety information (expiry, certification)  
+* Escrow so her money is safe until delivery is confirmed  
+* Delivery tracking and a simple dispute process with photos
+
+---
+
+### **Persona 2: Musa — Seller (Retail + Wholesale)**
+
+* 41, provisions distributor with a retail shop in Abuja  
+* Sells single units in-store and cartons to resellers via WhatsApp
+
+Goals:
+
+* Reach buyers beyond his shop and sell both retail and bulk  
+* Get paid securely without chasing buyers  
+* Stand out from dishonest sellers
+
+Frustrations:
+
+* Buyers claiming goods never arrived after delivery  
+* Informal orders with no records and no payment protection  
+* No way to prove his quality to new customers
+
+What he needs from Puremart:
+
+* Verified Seller badge and PureTrust score to win buyer confidence  
+* MOQ, bulk discounts, and quotation tools for wholesale orders  
+* Escrow so payment is guaranteed once he delivers
+
+---
+
+### **Persona 3: Blessing — Admin (Trust & Safety)**
+
+* 28, works on Puremart's marketplace operations team  
+* Reviews flagged products and resolves disputes
+
+Goals:
+
+* Keep fake and unsafe products off the platform  
+* Resolve disputes fairly and quickly
+
+Frustrations:
+
+* Too many listings to review manually  
+* Sellers re-uploading rejected products under new names  
+* Disputes with no evidence — just buyer word against seller word
+
+What she needs from Puremart:
+
+* AI flags with clear reasons for every alert  
+* Approve, reject, suspend, and request-more-information actions  
+* Dispute evidence (photos, videos) and escrow controls in one dashboard
 
 ---
 
