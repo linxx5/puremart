@@ -4,7 +4,7 @@
 
 ### **A Trusted Wholesale & Retail Marketplace with Escrow, Delivery Tracking and AI Product Safety**
 
-**Version:** 1.2  
+**Version:** 1.3  
  **Product Name:** Puremart Marketplace  
  **Tagline:** *Buy with Confidence. Sell with Trust.*
 
@@ -609,7 +609,70 @@ A chatbot that helps buyers find products.
 
 ---
 
-# **22\. Puremart Brand Promise**
+# **22\. User Stories & Journey Maps**
+
+## **Adaeze (Buyer) — User Stories**
+
+* As a buyer, I want to see a seller's verification badge and PureTrust score so that I buy only from sellers I can trust.  
+* As a buyer, I want to see expiry dates and certifications on food, health, and beauty products so that I never buy unsafe items.  
+* As a buyer, I want to pay into escrow so that my money is only released when I confirm delivery.  
+* As a buyer, I want to track my order from placement to delivery so that I always know where it is.  
+* As a buyer, I want to open a dispute with photos and videos so that I can get a refund or replacement for fake, damaged, or missing items.  
+* As a buyer, I want to rate products, sellers, and delivery so that other buyers benefit from my experience.
+
+---
+
+## **Musa (Seller) — User Stories**
+
+* As a seller, I want to apply for verification so that buyers trust my store.  
+* As a seller, I want to list products in retail and wholesale modes with MOQs and bulk discounts so that I serve both small and bulk buyers.  
+* As a seller, I want to receive custom quotation requests so that I can negotiate wholesale deals.  
+* As a seller, I want payments held in escrow so that I am guaranteed payment once I deliver.  
+* As a seller, I want to respond to disputes with my own evidence so that false claims against me can be dismissed.  
+* As a seller, I want to see my PureTrust score and what affects it so that I can protect my reputation.
+
+---
+
+## **Blessing (Admin) — User Stories**
+
+* As an admin, I want a queue of AI-flagged products with reasons so that I review the riskiest listings first.  
+* As an admin, I want to approve, reject, suspend, or request more information so that every safety decision is documented and final.  
+* As an admin, I want to see buyer and seller dispute evidence side by side so that I can make fair decisions quickly.  
+* As an admin, I want to turn product categories on and off so that I can control what is sold.  
+* As an admin, I want to oversee escrow holds and releases so that money moves only when it should.  
+* As an admin, I want to detect duplicate and re-uploaded rejected listings so that bad sellers cannot sneak back in.
+
+---
+
+## **Journey Maps**
+
+### **Adaeze — Buying Journey**
+
+1. Discovers Puremart after a bad experience elsewhere → cautious but hopeful  
+2. Searches for her product, filters to verified sellers, checks expiry information → confidence grows  
+3. Pays into escrow → feels safe committing her money  
+4. Tracks delivery from placement to doorstep → feels in control  
+5. Receives the correct, sealed product, confirms delivery → money is released, leaves a 5-star review → becomes a repeat buyer
+
+### **Musa — Selling Journey**
+
+1. Registers, submits verification documents → approved and badged  
+2. Lists products in retail and wholesale modes with MOQs → reaches two customer pools  
+3. Receives an escrow-backed wholesale order → ships with confidence  
+4. Buyer inspects during the protection period and confirms → payment released  
+5. Watches his PureTrust score rise → wins more orders
+
+### **Blessing — Trust & Safety Journey**
+
+1. Opens the dashboard → AI-flagged queue ranked by risk  
+2. Reviews a flagged listing with AI reasons → requests more information from the seller  
+3. Seller complies → approves; repeat offender → suspends  
+4. Picks up a dispute → reviews photo and video evidence from both sides → issues a decision  
+5. Escrow executes the decision automatically → case closed with a full audit trail
+
+---
+
+# **23\. Puremart Brand Promise**
 
 **Puremart is a trusted marketplace where AI, escrow, delivery tracking, and human oversight work together to help people buy and sell safely.**
 
