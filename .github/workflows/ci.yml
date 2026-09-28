@@ -47,8 +47,13 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile=false
       - run: pnpm --filter @puremart/api build
-      - run: cd infra && docker compose -f docker-compose.dev.yml up -d --build --wait --wait-timeout 180
-      - run: curl -fsS http://localhost:3001/health
+      - run: cd infra && docker compose -f docker-compose.dev.yml up -d --build
+      - name: Wait for healthy API
+        run: |
+          for i in $(seq 1 36); do
+            curl -fsS http://localhost:3001/health && break || sleep 5
+          done
+          curl -fsS http://localhost:3001/health
       - run: curl -fsS -X POST http://localhost:3001/webhooks/paystack -H 'Content-Type: application/json' -d '{"event":"charge.success"}'
       - run: cd infra && docker compose -f docker-compose.dev.yml logs api
         if: failure()
