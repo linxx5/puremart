@@ -16,3 +16,12 @@ Paystack test webhooks → `POST /webhooks/paystack` (answers 200, test run only
 Schedule `backup-postgres.ps1` in Windows Task Scheduler (daily). Then copy
 `C:\PuremartBackups` off-device — same-disk copies don't survive disk failure.
 Restore drill: `pg_restore` into a fresh container and point staging at it.
+
+## Drill evidence (2026-09-28) — PASS
+
+Ran `drill-backup-restore.ps1` against portable PostgreSQL 16 (no Docker needed):
+seeded 2-row escrow ledger (sum 3,250,000 kobo) → `pg_dump -Fc` → wiped the
+whole cluster → fresh `initdb` → `pg_restore` → verified **2 rows, sum 3,250,000**.
+Every kobo survived. Lessons baked into the scripts: dbname goes last on the
+`pg_dump` command line, and binary dumps must never pass through PowerShell `>`
+redirect (UTF-16 corruption) — dump with `-f` / copy out of the container instead.

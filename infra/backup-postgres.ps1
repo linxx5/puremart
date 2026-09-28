@@ -13,8 +13,15 @@ $Jobs = @(
 
 foreach ($j in $Jobs) {
   $Out = Join-Path $BackupDir "$($j.File)-$Stamp.dump"
-  docker exec $j.Service pg_dump -U puremart -Fc $j.Db > $Out 2>> (Join-Path $BackupDir "backup.log")
-  if ($?) { Write-Output "OK: $Out" } else { Write-Output "SKIP (service not running?): $($j.Service)" }
+  # NOTE: never redirect pg_dump stdout with PowerShell `>` — it re-encodes binary
+  # dumps as UTF-16 and corrupts them. Dump to a file inside the container, then copy out.
+  docker exec $j.Service pg_dump -U puremart -Fc -f /tmp/backup.dump $j.Db 2>> (Join-Path $BackupDir "backup.log")
+  if ($?) {
+    docker cp "$($j.Service):/tmp/backup.dump" $Out
+    if ($?) { Write-Output "OK: $Out" } else { Write-Output "FAIL (copy): $($j.Service)" }
+  } else {
+    Write-Output "SKIP (service not running?): $($j.Service)"
+  }
 }
 
 Get-ChildItem -Path $BackupDir -Filter "*.dump" | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-$KeepDays) } | Remove-Item
