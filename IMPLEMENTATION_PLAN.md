@@ -10,35 +10,38 @@ Companion to [`Puremart.md`](./Puremart.md) (PRD v1.3). Work is divided into seq
 
 Decide the stack once, document it, and set up the engineering backbone before any feature work.
 
-### Proposed architecture (to confirm in ADRs)
+### Accepted architecture (decisions locked)
 
-| Area | Recommendation | Rationale |
-|---|---|---|
-| Monorepo | TypeScript monorepo (Turborepo + pnpm) | One repo, shared types between web, mobile, API |
-| Web app | Next.js (storefront + admin) | SEO for product pages, fast iteration |
-| Mobile app | Expo React Native, shared design tokens with web | Android dominates the market; one team ships both |
-| API | NestJS (Node) + Python sidecar for AI jobs | Typed CRUD velocity + Python for image/text models |
-| Database | PostgreSQL (row-level multitenancy ready) | Relational fit for orders, escrow ledger, disputes |
-| Queue/jobs | Redis + BullMQ | AI checks, notifications, score recomputation |
-| File storage | S3-compatible (product images, dispute evidence) | Signed uploads, lifecycle rules |
-| Payments | Paystack (cards, transfers, webhooks) | Nigerian coverage; escrow modeled as platform-held ledger + dedicated settlement account |
-| Comms | Termii or Africa's Talking (SMS), WhatsApp Business API, email + push | Matches PRD notification channels |
-| Hosting | Managed containers (AWS ECS / Render) + managed Postgres/Redis | Small-team operability |
-| AI | Hosted vision + LLM APIs behind an internal review service | No model training in v1; AI flags, human decides |
+| # | Area | Decision | Notes |
+|---|---|---|---|
+| 1 | Monorepo | TypeScript monorepo (Turborepo + pnpm) ✅ | One repo, shared types between web, mobile, API |
+| 2 | Web app | Next.js (storefront + admin) ✅ | SEO for product pages; admin shares the project |
+| 3 | Mobile app | Expo React Native ✅ | One React team ships Android + iOS; tokens shared with web |
+| 4 | API | NestJS (Node) + Python sidecar for AI jobs ✅ | Typed CRUD velocity + Python for image/text models |
+| 5 | Database | PostgreSQL, self-hosted on local device ✅ | Daily backups stored off-device; migrations stay cloud-portable |
+| 6 | Queue/jobs | Redis + BullMQ ✅ | AI checks, notifications, score recomputation, escrow scheduler |
+| 7 | File storage | Cloudflare R2 ✅ | No viewing fees. Rules: (a) product photos public, compressed, multiple sizes; (b) seller IDs + dispute evidence private with short-lived links, deletable on request; (c) cross-region backup from day one |
+| 8 | Payments | Paystack ✅ | Cards, transfers, webhooks; escrow as platform-held ledger + dedicated settlement account |
+| 9 | Comms | Termii/Africa's Talking (SMS), WhatsApp Business API, ZeptoMail (email), Expo push ✅ | Spending rule: routine → push/WhatsApp; urgent + OTP → SMS; everything mirrored to in-app inbox |
+| 10 | Hosting | Local device (no cloud) ✅ | Docker Compose for dev/staging/prod isolation; public webhook endpoint for Paystack/WhatsApp callbacks; everything containerized so a future cloud move is a redeploy, not a rewrite |
+| 11 | AI | Hosted vision + LLM APIs behind internal review service ✅ | No model training in v1; AI flags with reasons, admin decides; every verdict stored |
 
 ### Scope
 
-- Write ADRs (Architecture Decision Records) for each row above.
-- Repo scaffolding, environments (dev/staging/prod), CI/CD with automated tests and preview deploys.
+- Record the accepted decisions above as ADRs (Architecture Decision Records).
+- Repo scaffolding, local environments (dev/staging/prod via Docker Compose), CI with automated tests and preview deploys.
 - Baseline observability (logs, errors, uptime) and secret management.
+- Automated daily PostgreSQL backups stored off-device, with restore tested.
+- Public webhook endpoint (port-forward or tunnel) so Paystack and WhatsApp callbacks reach the local server.
 
 ### Concrete outputs
 
-- [ ] `docs/adr/` with one ADR per decision above (status: proposed/accepted)
+- [ ] `docs/adr/` with one accepted ADR per decision above
 - [ ] Monorepo scaffold building locally and in CI
 - [ ] CI pipeline green: lint + typecheck + unit tests + preview deploy
-- [ ] Three environments live with health-check endpoints
-- [ ] Staging Paystack test keys wired; webhook receiver skeleton returning 200
+- [ ] Three local environments (dev/staging/prod) live with health-check endpoints
+- [ ] Staging Paystack test keys wired; webhook receiver skeleton returning 200 over the public endpoint
+- [ ] Daily Postgres backup job running with a tested restore
 
 ### Exit criteria
 
@@ -272,3 +275,4 @@ Puremart Verified Products, warehouse/fulfillment, international trade, business
 2. **Logistics reliability** — tracking is only as good as partner updates; design manual fallbacks from day one.
 3. **AI precision** — false flags erode seller trust; keep humans decisive and measure flag accuracy from Phase 3.
 4. **Dispute load** — staffing model for Blessing's team must scale with GMV, not headcount hopes.
+5. **Local hosting fragility** — power cuts, network drops, and hardware failure can take everything down. Mitigations: UPS, automated off-device database backups, R2 storage already off-device, and keeping every service containerized so a future cloud move is a redeploy, not a rewrite.
