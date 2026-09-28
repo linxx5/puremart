@@ -18,3 +18,17 @@ desktop.ini
 
 # Logs
 *.log
+
+# Node / builds
+node_modules/
+dist/
+.next/
+out/
+.expo/
+.turbo/
+*.tsbuildinfo
+
+# Env (never commit real secrets)
+.env
+infra/.env
+apps/*/.env
