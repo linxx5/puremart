@@ -25,6 +25,7 @@ Decide the stack once, document it, and set up the engineering backbone before a
 | 9 | Comms | Termii/Africa's Talking (SMS), WhatsApp Business API, ZeptoMail (email), Expo push ✅ | Spending rule: routine → push/WhatsApp; urgent + OTP → SMS; everything mirrored to in-app inbox |
 | 10 | Hosting | Local device (no cloud) ✅ | Docker Compose for dev/staging/prod isolation; public webhook endpoint for Paystack/WhatsApp callbacks; everything containerized so a future cloud move is a redeploy, not a rewrite |
 | 11 | AI | Hosted vision + LLM APIs behind internal review service ✅ | No model training in v1; AI flags with reasons, admin decides; every verdict stored |
+| 12 | Auth | Better Auth, self-hosted ✅ | Phone-OTP login via Termii, sessions in our Postgres, email + reset as backup; passkeys later. No per-user fees, no external landlord on login |
 
 ### Scope
 
@@ -77,13 +78,14 @@ Designer and engineer can each build the same product card independently and the
 
 ### Scope
 
-- Auth: email + phone OTP (SMS), sessions, password reset.
+- Auth via Better Auth (self-hosted, decision #12): phone-OTP login through Termii, sessions in Postgres, email + password reset as backup.
+- Verify the Better Auth ↔ NestJS integration in Phase 0 before building on it here.
 - Three roles: Buyer, Seller (retail/wholesale modes on one account), Admin — per PRD Section 4.
 - Seller verification flow: document submission → admin review → Verified badge (PRD Sections 4–5).
 
 ### Concrete outputs
 
-- [ ] Sign-up/login with phone OTP; role selection at onboarding
+- [ ] Sign-up/login with phone OTP via Better Auth; role selection at onboarding; account freeze/unfreeze for dispute handling
 - [ ] Seller verification application (identity, business info, contact, address, registration upload)
 - [ ] Admin approval queue: approve / reject / request-more-information with reasons
 - [ ] Verified Seller badge visible on storefront wherever sellers appear
