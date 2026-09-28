@@ -18,6 +18,7 @@ for (const file of files) {
   const deps = api?.depends_on ?? {};
   if (!(deps.postgres?.condition === 'service_healthy')) errors.push(`${tag} api must wait for healthy postgres`);
   if (!(deps.redis?.condition === 'service_healthy')) errors.push(`${tag} api must wait for healthy redis`);
+  if (!api?.healthcheck) errors.push(`${tag} api needs its own healthcheck so --wait blocks until boot`);
   if (file !== 'docker-compose.dev.yml') {
     const envText = JSON.stringify(api?.environment ?? {});
     if (!envText.includes('${POSTGRES_PASSWORD}')) {

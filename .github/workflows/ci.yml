@@ -29,9 +29,9 @@ jobs:
       - name: Validate compose files
         run: |
           cd infra
-          docker compose -f docker-compose.dev.yml config -q
-          docker compose -f docker-compose.staging.yml config -q
-          docker compose -f docker-compose.prod.yml config -q
+          POSTGRES_PASSWORD=dummy PAYSTACK_TEST_KEY=dummy docker compose -f docker-compose.dev.yml config > /dev/null
+          POSTGRES_PASSWORD=dummy PAYSTACK_TEST_KEY=dummy docker compose -f docker-compose.staging.yml config > /dev/null
+          POSTGRES_PASSWORD=dummy PAYSTACK_TEST_KEY=dummy docker compose -f docker-compose.prod.yml config > /dev/null
 
   compose-run:
     # Boots the real dev stack (Postgres + Redis + API) in Docker and hits it.
