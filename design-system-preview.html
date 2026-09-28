@@ -3,85 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Puremart — Design System Preview (v0.1)</title>
+<title>Puremart — Design System Preview (v0.2)</title>
 <style>
   :root{
-    /* Brand */
-    --pm-green-900:#06402A; --pm-green-700:#0B7A4B; --pm-green-600:#0E9359;
-    --pm-green-100:#DFF3E7; --pm-green-50:#F0FAF4;
+    /* Brand blues */
+    --pm-blue-950:#04265E; --pm-blue-700:#0057FF; --pm-blue-600:#0043CE;
+    --pm-sky:#00B2FF;
+    --pm-blue-100:#D9E8FF; --pm-blue-50:#EFF5FF;
     /* Ink / neutrals */
-    --pm-ink:#0A2540; --pm-slate-600:#475569; --pm-slate-400:#94A3B8;
-    --pm-slate-200:#E2E8F0; --pm-slate-100:#F1F5F9; --pm-paper:#F7F8F7; --pm-white:#FFFFFF;
+    --pm-ink:#081B3D; --pm-slate-600:#475569; --pm-slate-400:#94A3B8;
+    --pm-slate-200:#CBDDF5; --pm-slate-100:#F1F5F9; --pm-paper:#F4F8FF; --pm-white:#FFFFFF;
     /* Signal */
-    --pm-amber:#B45309; --pm-amber-bg:#FEF3C7;
-    --pm-red:#B91C1C; --pm-red-bg:#FEE2E2;
-    --pm-green-text:#06603A;
+    --pm-amber:#D97706; --pm-amber-bg:#FEF3C7;
+    --pm-red:#E11D48; --pm-red-bg:#FFE1E8;
+    --pm-blue-text:#0043CE;
     /* Shape & type */
     --pm-radius:10px;
     --pm-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:var(--pm-font);background:var(--pm-paper);color:var(--pm-ink);line-height:1.5}
-  header{background:var(--pm-green-900);color:#fff;padding:40px 32px}
+  header{background:linear-gradient(135deg,var(--pm-blue-950) 0%,var(--pm-blue-700) 60%,var(--pm-sky) 100%);color:#fff;padding:40px 32px}
   header h1{margin:0 0 4px;font-size:32px;letter-spacing:-.5px}
-  header p{margin:0;opacity:.85}
+  header p{margin:0;opacity:.9}
   main{max-width:960px;margin:0 auto;padding:32px 24px 64px}
-  section{background:var(--pm-white);border:1px solid var(--pm-slate-200);border-radius:14px;padding:28px;margin-bottom:24px}
-  section h2{margin:0 0 4px;font-size:20px}
+  section{background:var(--pm-white);border:1.5px solid var(--pm-slate-200);border-radius:14px;padding:28px;margin-bottom:24px}
+  section h2{margin:0 0 4px;font-size:20px;color:var(--pm-blue-950)}
   section .sub{margin:0 0 20px;color:var(--pm-slate-600);font-size:14px}
   /* Swatches */
   .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
-  .swatch{border:1px solid var(--pm-slate-200);border-radius:var(--pm-radius);overflow:hidden}
+  .swatch{border:1.5px solid var(--pm-slate-200);border-radius:var(--pm-radius);overflow:hidden}
   .swatch .chip{height:64px}
   .swatch .meta{padding:8px 10px;font-size:12px}
   .swatch .meta b{display:block;font-size:13px}
   /* Type */
   .type-row{border-bottom:1px dashed var(--pm-slate-200);padding:12px 0}
   .type-row:last-child{border-bottom:none}
-  .t-display{font-size:32px;font-weight:800;letter-spacing:-.5px}
+  .t-display{font-size:32px;font-weight:800;letter-spacing:-.5px;color:var(--pm-blue-950)}
   .t-h1{font-size:24px;font-weight:700}
   .t-h2{font-size:20px;font-weight:700}
   .t-body{font-size:16px}
   .t-small{font-size:14px;color:var(--pm-slate-600)}
   .t-caption{font-size:12px;color:var(--pm-slate-400)}
-  .t-price{font-size:20px;font-weight:800;color:var(--pm-green-700)}
+  .t-price{font-size:20px;font-weight:800;color:var(--pm-blue-700)}
   /* Buttons */
   .btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  .btn{font-family:inherit;font-size:15px;font-weight:600;border-radius:var(--pm-radius);
-       padding:12px 22px;border:1px solid transparent;cursor:pointer}
-  .btn-primary{background:var(--pm-green-700);color:#fff}
-  .btn-primary:hover{background:var(--pm-green-900)}
-  .btn-secondary{background:var(--pm-white);color:var(--pm-green-700);border-color:var(--pm-green-700)}
+  .btn{font-family:inherit;font-size:15px;font-weight:700;border-radius:var(--pm-radius);
+       padding:12px 22px;border:2px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--pm-blue-700);color:#fff}
+  .btn-primary:hover{background:var(--pm-blue-600)}
+  .btn-secondary{background:var(--pm-white);color:var(--pm-blue-700);border-color:var(--pm-blue-700)}
+  .btn-secondary:hover{background:var(--pm-blue-50)}
   .btn-danger{background:var(--pm-red);color:#fff}
   .btn-ghost{background:transparent;color:var(--pm-ink)}
   .btn:disabled{background:var(--pm-slate-200);color:var(--pm-slate-400);cursor:not-allowed}
   .btn-sm{padding:8px 14px;font-size:13px}
   /* Inputs */
   .field{margin-bottom:16px;max-width:420px}
-  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
   .field input{width:100%;font-family:inherit;font-size:15px;padding:12px 14px;color:var(--pm-ink);
-    background:var(--pm-white);border:1.5px solid var(--pm-slate-200);border-radius:var(--pm-radius)}
-  .field input:focus{outline:none;border-color:var(--pm-green-600);box-shadow:0 0 0 3px var(--pm-green-100)}
+    background:var(--pm-white);border:2px solid var(--pm-slate-200);border-radius:var(--pm-radius)}
+  .field input:focus{outline:none;border-color:var(--pm-blue-700);box-shadow:0 0 0 3px var(--pm-blue-100)}
   .field input:disabled{background:var(--pm-slate-100);color:var(--pm-slate-400)}
   .field .hint{font-size:12px;color:var(--pm-slate-400);margin-top:4px}
   .field.error input{border-color:var(--pm-red)}
   .field.error .hint{color:var(--pm-red)}
   .search-wrap{position:relative;max-width:420px}
   .search-wrap input{width:100%;font-family:inherit;font-size:15px;padding:12px 14px 12px 40px;
-    border:1.5px solid var(--pm-slate-200);border-radius:999px}
-  .search-wrap input:focus{outline:none;border-color:var(--pm-green-600);box-shadow:0 0 0 3px var(--pm-green-100)}
-  .search-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--pm-slate-400)}
+    border:2px solid var(--pm-blue-700);border-radius:999px}
+  .search-wrap input:focus{outline:none;box-shadow:0 0 0 3px var(--pm-blue-100)}
+  .search-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--pm-blue-700);font-weight:700}
   /* Marketplace extras */
   .pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;
     padding:6px 12px;border-radius:999px;margin:0 8px 8px 0}
-  .pill-passed{background:var(--pm-green-100);color:var(--pm-green-text)}
+  .pill-passed{background:var(--pm-blue-100);color:var(--pm-blue-text)}
   .pill-review{background:var(--pm-amber-bg);color:var(--pm-amber)}
   .pill-rejected{background:var(--pm-red-bg);color:var(--pm-red)}
-  .pill-verified{background:var(--pm-green-700);color:#fff}
-  .pill-trust{background:var(--pm-ink);color:#fff}
-  .escrow{border:1.5px solid var(--pm-green-600);background:var(--pm-green-50);
+  .pill-verified{background:var(--pm-blue-700);color:#fff}
+  .pill-trust{background:var(--pm-blue-950);color:#fff}
+  .escrow{border:2px solid var(--pm-blue-700);background:var(--pm-blue-50);
     border-radius:var(--pm-radius);padding:14px 16px;font-size:14px;margin-top:8px;max-width:560px}
-  .card{border:1px solid var(--pm-slate-200);border-radius:var(--pm-radius);padding:16px;max-width:560px;margin-top:12px}
+  .card{border:1.5px solid var(--pm-slate-200);border-radius:var(--pm-radius);padding:16px;max-width:560px;margin-top:12px}
   .card .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
   footer{text-align:center;color:var(--pm-slate-400);font-size:12px;padding:0 0 32px}
 </style>
@@ -89,24 +91,24 @@
 <body>
 <header>
   <h1>Puremart Design System</h1>
-  <p>Preview v0.1 — Buy with Confidence. Sell with Trust.</p>
+  <p>Preview v0.2 — bright blues, sharp contrast. Buy with Confidence. Sell with Trust.</p>
 </header>
 <main>
 
   <section>
     <h2>1 · Colors</h2>
-    <p class="sub">Green = trust, safety, money. Amber/red reserved for status signals.</p>
+    <p class="sub">Vivid blue = trust, safety, money. Amber/red reserved for status signals.</p>
     <div class="swatches">
-      <div class="swatch"><div class="chip" style="background:#06402A"></div><div class="meta"><b>Forest</b>#06402A · headers</div></div>
-      <div class="swatch"><div class="chip" style="background:#0B7A4B"></div><div class="meta"><b>Trust Green</b>#0B7A4B · primary</div></div>
-      <div class="swatch"><div class="chip" style="background:#0E9359"></div><div class="meta"><b>Leaf</b>#0E9359 · hover/focus</div></div>
-      <div class="swatch"><div class="chip" style="background:#DFF3E7"></div><div class="meta"><b>Mint</b>#DFF3E7 · success bg</div></div>
-      <div class="swatch"><div class="chip" style="background:#0A2540"></div><div class="meta"><b>Ink</b>#0A2540 · text</div></div>
+      <div class="swatch"><div class="chip" style="background:#04265E"></div><div class="meta"><b>Midnight</b>#04265E · headers</div></div>
+      <div class="swatch"><div class="chip" style="background:#0057FF"></div><div class="meta"><b>Puremart Blue</b>#0057FF · primary</div></div>
+      <div class="swatch"><div class="chip" style="background:#00B2FF"></div><div class="meta"><b>Sky Flash</b>#00B2FF · highlights</div></div>
+      <div class="swatch"><div class="chip" style="background:#D9E8FF"></div><div class="meta"><b>Ice</b>#D9E8FF · tint bg</div></div>
+      <div class="swatch"><div class="chip" style="background:#081B3D"></div><div class="meta"><b>Ink Navy</b>#081B3D · text</div></div>
       <div class="swatch"><div class="chip" style="background:#475569"></div><div class="meta"><b>Slate</b>#475569 · secondary</div></div>
-      <div class="swatch"><div class="chip" style="background:#E2E8F0"></div><div class="meta"><b>Mist</b>#E2E8F0 · borders</div></div>
-      <div class="swatch"><div class="chip" style="background:#F7F8F7"></div><div class="meta"><b>Paper</b>#F7F8F7 · page bg</div></div>
-      <div class="swatch"><div class="chip" style="background:#B45309"></div><div class="meta"><b>Amber</b>#B45309 · under review</div></div>
-      <div class="swatch"><div class="chip" style="background:#B91C1C"></div><div class="meta"><b>Clay Red</b>#B91C1C · danger</div></div>
+      <div class="swatch"><div class="chip" style="background:#CBDDF5"></div><div class="meta"><b>Mist Blue</b>#CBDDF5 · borders</div></div>
+      <div class="swatch"><div class="chip" style="background:#F4F8FF"></div><div class="meta"><b>Paper</b>#F4F8FF · page bg</div></div>
+      <div class="swatch"><div class="chip" style="background:#D97706"></div><div class="meta"><b>Amber</b>#D97706 · under review</div></div>
+      <div class="swatch"><div class="chip" style="background:#E11D48"></div><div class="meta"><b>Signal Red</b>#E11D48 · danger</div></div>
     </div>
   </section>
 
@@ -180,6 +182,6 @@
   </section>
 
 </main>
-<footer>Puremart design preview v0.1 — tokens to be formalized in Phase 1 (@puremart/tokens).</footer>
+<footer>Puremart design preview v0.2 — bright blue theme. Tokens to be formalized in Phase 1 (@puremart/tokens).</footer>
 </body>
 </html>
