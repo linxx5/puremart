@@ -32,3 +32,25 @@ jobs:
           docker compose -f docker-compose.dev.yml config -q
           docker compose -f docker-compose.staging.yml config -q
           docker compose -f docker-compose.prod.yml config -q
+
+  compose-run:
+    # Boots the real dev stack (Postgres + Redis + API) in Docker and hits it.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile=false
+      - run: pnpm --filter @puremart/api build
+      - run: cd infra && docker compose -f docker-compose.dev.yml up -d --build --wait --wait-timeout 180
+      - run: curl -fsS http://localhost:3001/health
+      - run: curl -fsS -X POST http://localhost:3001/webhooks/paystack -H 'Content-Type: application/json' -d '{"event":"charge.success"}'
+      - run: cd infra && docker compose -f docker-compose.dev.yml logs api
+        if: failure()
+      - run: cd infra && docker compose -f docker-compose.dev.yml down
+        if: always()
