@@ -17,7 +17,7 @@ Decide the stack once, document it, and set up the engineering backbone before a
 | 1 | Monorepo | TypeScript monorepo (Turborepo + pnpm) ✅ | One repo, shared types between web, mobile, API |
 | 2 | Web app | Next.js (storefront + admin) ✅ | SEO for product pages; admin shares the project |
 | 3 | Mobile app | Expo React Native ✅ | One React team ships Android + iOS; tokens shared with web |
-| 4 | API | NestJS (Node) + Python sidecar for AI jobs ✅ | Typed CRUD velocity + Python for image/text models |
+| 4 | API | NestJS (Node) + Python sidecar for AI jobs ✅ | Dedicated standalone API project (not Next.js API routes); typed CRUD velocity + Python for image/text models |
 | 5 | Database | PostgreSQL, self-hosted on local device ✅ | Daily backups stored off-device; migrations stay cloud-portable |
 | 6 | Queue/jobs | Redis + BullMQ ✅ | AI checks, notifications, score recomputation, escrow scheduler |
 | 7 | File storage | Cloudflare R2 ✅ | No viewing fees. Rules: (a) product photos public, compressed, multiple sizes; (b) seller IDs + dispute evidence private with short-lived links, deletable on request; (c) cross-region backup from day one |
@@ -32,7 +32,7 @@ Decide the stack once, document it, and set up the engineering backbone before a
 - Repo scaffolding, local environments (dev/staging/prod via Docker Compose), CI with automated tests and preview deploys.
 - Baseline observability (logs, errors, uptime) and secret management.
 - Automated daily PostgreSQL backups stored off-device, with restore tested.
-- Public webhook endpoint (port-forward or tunnel) so Paystack and WhatsApp callbacks reach the local server.
+- Temporary public webhook endpoint (a tunnel is fine — test run only, not the real deal) so Paystack and WhatsApp test callbacks reach the local server; production-grade endpoint deferred to Phase 9.
 
 ### Concrete outputs
 
@@ -40,7 +40,7 @@ Decide the stack once, document it, and set up the engineering backbone before a
 - [ ] Monorepo scaffold building locally and in CI
 - [ ] CI pipeline green: lint + typecheck + unit tests + preview deploy
 - [ ] Three local environments (dev/staging/prod) live with health-check endpoints
-- [ ] Staging Paystack test keys wired; webhook receiver skeleton returning 200 over the public endpoint
+- [ ] Staging Paystack test keys wired; webhook receiver skeleton returning 200 over the temporary test endpoint
 - [ ] Daily Postgres backup job running with a tested restore
 
 ### Exit criteria
@@ -238,7 +238,7 @@ Admin can run the marketplace from the dashboard alone; AI features behind flags
 - [ ] Performance: load test to 10x pilot traffic; image CDN; slow-query pass
 - [ ] Financial: escrow reconciliation runbook, payout failure handling, incident playbook for stuck funds
 - [ ] Pilot: 20–50 real sellers, concierge onboarding, weekly metric review (conversion, dispute rate, delivery times, NPS)
-- [ ] Launch checklist signed: legal (terms, returns, privacy), support staffing, App Store/Play listings
+- [ ] Launch checklist signed: legal (terms, returns, privacy), support staffing, App Store/Play listings, production-grade public endpoints (webhooks, callbacks) replacing the Phase 0 test tunnel
 
 ### Exit criteria
 
