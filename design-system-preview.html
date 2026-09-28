@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puremart — Design System Preview (v0.1)</title>
+<style>
+  :root{
+    /* Brand */
+    --pm-green-900:#06402A; --pm-green-700:#0B7A4B; --pm-green-600:#0E9359;
+    --pm-green-100:#DFF3E7; --pm-green-50:#F0FAF4;
+    /* Ink / neutrals */
+    --pm-ink:#0A2540; --pm-slate-600:#475569; --pm-slate-400:#94A3B8;
+    --pm-slate-200:#E2E8F0; --pm-slate-100:#F1F5F9; --pm-paper:#F7F8F7; --pm-white:#FFFFFF;
+    /* Signal */
+    --pm-amber:#B45309; --pm-amber-bg:#FEF3C7;
+    --pm-red:#B91C1C; --pm-red-bg:#FEE2E2;
+    --pm-green-text:#06603A;
+    /* Shape & type */
+    --pm-radius:10px;
+    --pm-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--pm-font);background:var(--pm-paper);color:var(--pm-ink);line-height:1.5}
+  header{background:var(--pm-green-900);color:#fff;padding:40px 32px}
+  header h1{margin:0 0 4px;font-size:32px;letter-spacing:-.5px}
+  header p{margin:0;opacity:.85}
+  main{max-width:960px;margin:0 auto;padding:32px 24px 64px}
+  section{background:var(--pm-white);border:1px solid var(--pm-slate-200);border-radius:14px;padding:28px;margin-bottom:24px}
+  section h2{margin:0 0 4px;font-size:20px}
+  section .sub{margin:0 0 20px;color:var(--pm-slate-600);font-size:14px}
+  /* Swatches */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+  .swatch{border:1px solid var(--pm-slate-200);border-radius:var(--pm-radius);overflow:hidden}
+  .swatch .chip{height:64px}
+  .swatch .meta{padding:8px 10px;font-size:12px}
+  .swatch .meta b{display:block;font-size:13px}
+  /* Type */
+  .type-row{border-bottom:1px dashed var(--pm-slate-200);padding:12px 0}
+  .type-row:last-child{border-bottom:none}
+  .t-display{font-size:32px;font-weight:800;letter-spacing:-.5px}
+  .t-h1{font-size:24px;font-weight:700}
+  .t-h2{font-size:20px;font-weight:700}
+  .t-body{font-size:16px}
+  .t-small{font-size:14px;color:var(--pm-slate-600)}
+  .t-caption{font-size:12px;color:var(--pm-slate-400)}
+  .t-price{font-size:20px;font-weight:800;color:var(--pm-green-700)}
+  /* Buttons */
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font-family:inherit;font-size:15px;font-weight:600;border-radius:var(--pm-radius);
+       padding:12px 22px;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--pm-green-700);color:#fff}
+  .btn-primary:hover{background:var(--pm-green-900)}
+  .btn-secondary{background:var(--pm-white);color:var(--pm-green-700);border-color:var(--pm-green-700)}
+  .btn-danger{background:var(--pm-red);color:#fff}
+  .btn-ghost{background:transparent;color:var(--pm-ink)}
+  .btn:disabled{background:var(--pm-slate-200);color:var(--pm-slate-400);cursor:not-allowed}
+  .btn-sm{padding:8px 14px;font-size:13px}
+  /* Inputs */
+  .field{margin-bottom:16px;max-width:420px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  .field input{width:100%;font-family:inherit;font-size:15px;padding:12px 14px;color:var(--pm-ink);
+    background:var(--pm-white);border:1.5px solid var(--pm-slate-200);border-radius:var(--pm-radius)}
+  .field input:focus{outline:none;border-color:var(--pm-green-600);box-shadow:0 0 0 3px var(--pm-green-100)}
+  .field input:disabled{background:var(--pm-slate-100);color:var(--pm-slate-400)}
+  .field .hint{font-size:12px;color:var(--pm-slate-400);margin-top:4px}
+  .field.error input{border-color:var(--pm-red)}
+  .field.error .hint{color:var(--pm-red)}
+  .search-wrap{position:relative;max-width:420px}
+  .search-wrap input{width:100%;font-family:inherit;font-size:15px;padding:12px 14px 12px 40px;
+    border:1.5px solid var(--pm-slate-200);border-radius:999px}
+  .search-wrap input:focus{outline:none;border-color:var(--pm-green-600);box-shadow:0 0 0 3px var(--pm-green-100)}
+  .search-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--pm-slate-400)}
+  /* Marketplace extras */
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;
+    padding:6px 12px;border-radius:999px;margin:0 8px 8px 0}
+  .pill-passed{background:var(--pm-green-100);color:var(--pm-green-text)}
+  .pill-review{background:var(--pm-amber-bg);color:var(--pm-amber)}
+  .pill-rejected{background:var(--pm-red-bg);color:var(--pm-red)}
+  .pill-verified{background:var(--pm-green-700);color:#fff}
+  .pill-trust{background:var(--pm-ink);color:#fff}
+  .escrow{border:1.5px solid var(--pm-green-600);background:var(--pm-green-50);
+    border-radius:var(--pm-radius);padding:14px 16px;font-size:14px;margin-top:8px;max-width:560px}
+  .card{border:1px solid var(--pm-slate-200);border-radius:var(--pm-radius);padding:16px;max-width:560px;margin-top:12px}
+  .card .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  footer{text-align:center;color:var(--pm-slate-400);font-size:12px;padding:0 0 32px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Puremart Design System</h1>
+  <p>Preview v0.1 — Buy with Confidence. Sell with Trust.</p>
+</header>
+<main>
+
+  <section>
+    <h2>1 · Colors</h2>
+    <p class="sub">Green = trust, safety, money. Amber/red reserved for status signals.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#06402A"></div><div class="meta"><b>Forest</b>#06402A · headers</div></div>
+      <div class="swatch"><div class="chip" style="background:#0B7A4B"></div><div class="meta"><b>Trust Green</b>#0B7A4B · primary</div></div>
+      <div class="swatch"><div class="chip" style="background:#0E9359"></div><div class="meta"><b>Leaf</b>#0E9359 · hover/focus</div></div>
+      <div class="swatch"><div class="chip" style="background:#DFF3E7"></div><div class="meta"><b>Mint</b>#DFF3E7 · success bg</div></div>
+      <div class="swatch"><div class="chip" style="background:#0A2540"></div><div class="meta"><b>Ink</b>#0A2540 · text</div></div>
+      <div class="swatch"><div class="chip" style="background:#475569"></div><div class="meta"><b>Slate</b>#475569 · secondary</div></div>
+      <div class="swatch"><div class="chip" style="background:#E2E8F0"></div><div class="meta"><b>Mist</b>#E2E8F0 · borders</div></div>
+      <div class="swatch"><div class="chip" style="background:#F7F8F7"></div><div class="meta"><b>Paper</b>#F7F8F7 · page bg</div></div>
+      <div class="swatch"><div class="chip" style="background:#B45309"></div><div class="meta"><b>Amber</b>#B45309 · under review</div></div>
+      <div class="swatch"><div class="chip" style="background:#B91C1C"></div><div class="meta"><b>Clay Red</b>#B91C1C · danger</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Typography</h2>
+    <p class="sub">Inter with system fallback — no downloads, fast on low bandwidth.</p>
+    <div class="type-row t-display">Display — Baby formula you can trust</div>
+    <div class="type-row t-h1">Heading 1 — Order #PM-2041 confirmed</div>
+    <div class="type-row t-h2">Heading 2 — Delivery tracking</div>
+    <div class="type-row t-body">Body — Your payment of ₦24,500 is held in Puremart Escrow until you confirm delivery.</div>
+    <div class="type-row t-small">Small — Sold by Musa Provisions · Kano · 4.8 rating</div>
+    <div class="type-row t-caption">Caption — PROTECTION ENDS IN 3 DAYS</div>
+    <div class="type-row t-price">₦24,500 <span class="t-small">· ₦23,000/carton wholesale</span></div>
+  </section>
+
+  <section>
+    <h2>3 · Buttons</h2>
+    <p class="sub">One primary action per screen. Danger only for destructive acts.</p>
+    <div class="btn-row">
+      <button class="btn btn-primary">Pay into Escrow</button>
+      <button class="btn btn-secondary">Track Order</button>
+      <button class="btn btn-danger">Open Dispute</button>
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary" disabled>Confirming…</button>
+      <button class="btn btn-secondary btn-sm">Small action</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>4 · Inputs</h2>
+    <p class="sub">Large touch targets, visible focus ring, plain-language hints.</p>
+    <div class="field">
+      <label for="in-name">Full name</label>
+      <input id="in-name" type="text" placeholder="e.g. Adaeze Okafor">
+      <div class="hint">Use the name on your ID for verification.</div>
+    </div>
+    <div class="field error">
+      <label for="in-phone">Phone number</label>
+      <input id="in-phone" type="text" value="0803" aria-invalid="true">
+      <div class="hint">Enter a valid 11-digit Nigerian number.</div>
+    </div>
+    <div class="field">
+      <label for="in-dis">Disabled</label>
+      <input id="in-dis" type="text" value="Locked during review" disabled>
+    </div>
+    <div class="field">
+      <label>Search products</label>
+      <div class="search-wrap"><span>⌕</span><input type="text" placeholder="Best toothpaste under ₦5,000"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5 · Marketplace components (bonus)</h2>
+    <p class="sub">Built from the same tokens — trust signals buyers learn to look for.</p>
+    <div>
+      <span class="pill pill-verified">🟢 Verified Seller</span>
+      <span class="pill pill-trust">🟢 95/100 Trusted</span>
+      <span class="pill pill-passed">Passed</span>
+      <span class="pill pill-review">Under Review</span>
+      <span class="pill pill-rejected">Rejected</span>
+    </div>
+    <div class="escrow">🔒 <b>₦24,500 held in Puremart Escrow.</b> Released when you confirm delivery, when protection expires, or when a dispute is resolved.</div>
+    <div class="card">
+      <div class="row"><b>Nivea Soft Cream 200ml</b><span class="t-price">₦8,200</span></div>
+      <div class="t-small">Musa Provisions · <span class="pill pill-passed" style="margin:4px 0">Passed</span></div>
+      <div class="btn-row" style="margin-top:10px">
+        <button class="btn btn-primary btn-sm">Add to Cart</button>
+        <button class="btn btn-secondary btn-sm">Request Quote</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>Puremart design preview v0.1 — tokens to be formalized in Phase 1 (@puremart/tokens).</footer>
+</body>
+</html>
