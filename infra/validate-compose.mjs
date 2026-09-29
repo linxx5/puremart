@@ -1,5 +1,9 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { load as yamlLoad } from 'js-yaml';
+
+const here = dirname(fileURLToPath(import.meta.url));
 
 // Validates infra/docker-compose.*.yml without needing Docker:
 // services, images, healthchecks, dependencies, required secrets, port clashes.
@@ -19,6 +23,12 @@ for (const file of files) {
   if (!(deps.postgres?.condition === 'service_healthy')) errors.push(`${tag} api must wait for healthy postgres`);
   if (!(deps.redis?.condition === 'service_healthy')) errors.push(`${tag} api must wait for healthy redis`);
   if (!api?.healthcheck) errors.push(`${tag} api needs its own healthcheck so --wait blocks until boot`);
+  if (api?.build) {
+    const ctx = resolve(here, api.build.context ?? '.');
+    const df = resolve(ctx, api.build.dockerfile ?? 'Dockerfile');
+    if (!existsSync(ctx)) errors.push(`${tag} api build context missing: ${api.build.context}`);
+    if (!existsSync(df)) errors.push(`${tag} api dockerfile missing: ${api.build.dockerfile}`);
+  }
   if (file !== 'docker-compose.dev.yml') {
     const envText = JSON.stringify(api?.environment ?? {});
     if (!envText.includes('${POSTGRES_PASSWORD}')) {
